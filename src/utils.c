@@ -12,7 +12,7 @@ void mysh_parse_command(const char* command,
  char* token;
 char seps[]=" ,\t\n";
 char* cmd=(char*)malloc(sizeof(char));
-strcpy(cmd,command)
+strcpy(cmd,command);
 token=strtok(cmd,seps);
 while(token!=NULL)
 {
