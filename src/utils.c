@@ -14,5 +14,14 @@ char seps[]=" ,\t\n";
 char* cmd=(char*)malloc(sizeof(char));
 strcpy(cmd,command)
 token=strtok(cmd,seps);
+while(token!=NULL)
+{
+ar[count]=(char*)malloc(sizeof(char));
+strcpy(ar[count],token);
+token=strtok(NULL,seps);
+count++;
+}
+*argc=count;
+*argv=ar;
 
 }
