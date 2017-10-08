@@ -1,28 +1,32 @@
 #include "utils.h"
 #include <stdlib.h>
 #include <string.h>
-#define MAXSIZE 100
 
 void mysh_parse_command(const char* command,
                         int *argc, char*** argv)
 {
   // TODO: Fill this!
- *argv=(char**)malloc(sizeof(char*)*MAXSIZE);
- int count=0;
- char* token;
-char seps[]=" ,\t\n";
-char* cmd=(char*)malloc(sizeof(char)*MAXSIZE);
+int count=0;
+ (*argv)=(char**)malloc(sizeof(char**)*50);
+(*argv)[count]=(char*)malloc(sizeof(char*)*50);
+char* cmd=(char*)malloc(sizeof(char)*strlen(command));
 strcpy(cmd,command);
-token=strtok(cmd,seps);
-
+char* token;
+token=strtok(cmd,"' ', \n\t");
+if(token==NULL)
+{
+(*argc)=1;
+strcpy((*argv)[0],"");
+return;
+}
 while(token!=NULL)
 {
-(*argv)[count]=(char*)malloc(sizeof(char));
-strcpy(*argv[count],token);
-token=strtok(NULL,seps);
-count++;
+strcpy((*argv)[count],token);
+(*argv)[++count]=(char*)malloc(sizeof(char)*50);
+token=strtok(NULL, "' ', \n\t");
+
 }
 *argc=count;
-
+free(cmd);
 
 }
