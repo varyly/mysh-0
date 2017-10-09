@@ -8,7 +8,6 @@ int do_cd(int argc, char** argv) {
     return -1;
 
   // TODO: Fill it!
-if(chdir(argv[1])) return -1;
 
   return 0;
 }
@@ -27,7 +26,7 @@ printf("%s\n",buf);
 
 int validate_cd_argv(int argc, char** argv) {
   // TODO: Fill it!
-if(strcmp(argv[0],"cd")||argc>2) return 0;
+if(strcmp(argv[0],"cd")||argc!=2) return 0;
 
   return 1;
 }
